@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import axios from "axios";
+import moment from "moment";
 import CountUp from "react-countup";
 import SemiCircleBar from "./components/SemiCircleBar";
 import getCountryCodeOrName, { getSuggestionList } from "./helper";
@@ -16,9 +17,12 @@ function App() {
     totalRecoveredCases: 0,
     newlyRecoveredCases: 0,
   };
+
   const [inputVal, setInputVal] = useState("");
   const [suggestion, setSuggestion] = useState([]);
   const [stats, setStats] = useState(initialStats);
+  const [date, setDate] = useState('');
+  const [history, setHistory] = useState([]);
   const inputRef = useRef();
 
   const fetchData = async (countryCode) => {
@@ -31,7 +35,11 @@ function App() {
       },
     };
     try {
-      await axios.request(options).then((res) => setStats(res.data.stats));
+      await axios.request(options).then((res) => {
+        setStats(res.data.stats);
+        setHistory([...res?.data?.stats?.history]);
+        return res;
+      });
     } catch (e) {
       console.error(e);
     }
@@ -60,6 +68,19 @@ function App() {
       setStats(initialStats);
     }
   };
+
+  const handleDateSelect = (e) => {
+    setDate(e.target.value);
+    console.log(history?.[e.target.value], e.target.value)
+    setStats({
+      totalConfirmedCases: history?.[e.target.value]?.confirmed,
+      newlyConfirmedCases: history?.[e.target.value]?.confirmed - history?.[e.target.value - 1]?.confirmed,
+      totalDeaths: history?.[e.target.value]?.deaths,
+      newDeaths: history?.[e.target.value]?.deaths - history?.[e.target.value - 1]?.deaths,
+      totalRecoveredCases: history?.[e.target.value]?.recovered,
+      newlyRecoveredCases: history?.[e.target.value]?.recovered - history?.[e.target.value - 1]?.recovered,
+    })
+  }
 
   const selectValue = (val) => {
     setInputVal(val);
@@ -103,6 +124,17 @@ function App() {
             ) : null}
           </div>
         </form>
+        <div>
+          {history.length ? (
+            <select className="country-input select-date" onChange={handleDateSelect} value={date}>
+              {history.map((val, index, arr) => (
+                <option value={arr.length - 1 - index}>
+                  {moment(arr[arr.length - 1 - index].date).format("MMMM Do YYYY")}
+                </option>
+              ))}
+            </select>
+          ) : null}
+        </div>
         <div className="card-wrapper confirmed">
           <div className="outer-cover-card">
             <div className="card">
