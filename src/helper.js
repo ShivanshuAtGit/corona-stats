@@ -1,4 +1,4 @@
-var nameCountries = {
+export const countriesName = {
     'Afghanistan': 'AF',
     'Aland Islands': 'AX',
     'Albania': 'AL',
@@ -247,8 +247,15 @@ var nameCountries = {
 };
 
 function getCountryCodeOrName(inputValue) {
-    if (inputValue in nameCountries) {
-        return nameCountries[inputValue];
+    if (inputValue in countriesName) {
+        return countriesName[inputValue];
     }
-    else '';
+    else return '';
 }
+
+export const getSuggestionList = (input) => {
+    const res = Object.keys(countriesName).filter(item => item.includes(input))
+    return res;
+}
+
+export default getCountryCodeOrName;

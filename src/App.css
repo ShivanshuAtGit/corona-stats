@@ -1,4 +1,140 @@
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(128, 128, 128, 0.507);
+}
+
 .App {
-  padding: 6.4rem 0;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
   text-align: center;
+}
+
+.section {
+  padding: 20px;
+  max-width: 1128px;
+  margin: 0 auto;
+}
+
+.section > h2 {
+  margin-bottom: 40px;
+  color: rgb(48, 48, 48);
+}
+
+.country-input {
+  border: 1px solid #4d4dff88;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.country-input:focus {
+  outline: none;
+}
+
+.search-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #4d4dff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: all 0.3s;
+}
+
+.search-button:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.24);
+}
+
+.search-button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.input-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.suggestion-list {
+  list-style: none;
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0px 8px 24px 0px #0000001a;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding: 5px 0;
+  max-height: 200px;
+  width: 100%;
+  overflow-y: auto;
+  background-color: white;
+  text-align: left;
+}
+
+.suggestion-list li {
+  padding: 5px 20px 5px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.suggestion-list li:hover {
+  background-color: rgb(241, 241, 241);
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 40px 20px;
+}
+
+.outer-cover-card {
+  margin-bottom: 20px;
+}
+
+.outer-cover-card > h3 {
+  font-size: 18px;
+}
+
+.card {
+  min-height: 120px;
+  min-width: 200px;
+  background-color: white;
+  box-shadow: 0px 8px 24px 0px #0000001a;
+  border-radius: 10px;
+  margin: 10px 30px;
+}
+
+.card-total {
+  padding: 10px;
+}
+
+.card-total p {
+  font-size: 10px;
+  margin-top: 5px;
+  color: rgb(179, 179, 179);
+}
+
+.card-new {
+  margin-bottom: 10px;
+}
+
+.card-new p {
+  font-size: 10px;
+  margin-top: 5px;
+  color: rgb(179, 179, 179);
+}
+
+.confirmed {
+  color: #2a2a8a;
+}
+
+.death {
+  color: #ff4d88;
+}
+
+.recovered {
+  color: #4dff91;
 }
