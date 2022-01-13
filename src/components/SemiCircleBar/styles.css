@@ -1,0 +1,56 @@
+.semi-circle {
+  height: 150px;
+  width: 300px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.big-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  border: 30px solid;
+  border-color: #ebebeb #ebebeb #4d4dff #4d4dff;
+  border-radius: 50%;
+  transition: all 1s;
+}
+
+.small-circle {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 200px;
+  height: 200px;
+  border: 30px solid;
+  border-color: #ebebeb #ebebeb #ff4d88 #ff4d88;
+  border-radius: 50%;
+  transition: all 1s;
+}
+
+.graph-counter {
+  height: 150px;
+  width: 300px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.graph-text {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.graph-text.big {
+  color: #2a2a8a;
+}
+
+.graph-text.small {
+  margin-left: 50px;
+  color: #ff4d88;
+}
