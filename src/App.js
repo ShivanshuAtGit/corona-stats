@@ -68,17 +68,15 @@ function App() {
   };
 
   const getPercentage = (newVal, totalVal) => {
-    if (totalVal) {
-      console.log(parseFloat(parseInt(newVal) / parseInt(totalVal)) * 100)
+    if (totalVal)
       return parseFloat(parseInt(newVal) / parseInt(totalVal)) * 100;
-    }
     return 0;
   };
 
   return (
     <main className="App">
       <section className="section">
-      <h2>Country Corona Stats</h2>
+        <h2>Country Corona Stats</h2>
         <form>
           <div className="input-wrapper">
             <input
@@ -192,10 +190,7 @@ function App() {
         </div>
 
         <SemiCircleBar
-          smallCounter={getPercentage(
-            stats.newDeaths,
-            stats.totalDeaths
-          )}
+          smallCounter={getPercentage(stats.newDeaths, stats.totalDeaths)}
           bigCounter={getPercentage(
             stats.newlyConfirmedCases,
             stats.totalConfirmedCases
